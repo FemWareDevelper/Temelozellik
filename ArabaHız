@@ -1,1 +1,47 @@
-a
+local UserInputService = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+
+local speedMultiplier = 10000
+
+local boostKey = Enum.KeyCode.LeftShift
+
+local function getCar()
+    local character = player.Character
+    if character and character:FindFirstChildOfClass("Humanoid") then
+        local seatPart = character:FindFirstChildOfClass("Humanoid").SeatPart
+        if seatPart and seatPart:IsA("VehicleSeat") then
+            return seatPart
+        end
+    end
+    return nil
+end
+
+local function enableBoost(seat)
+    if seat and seat.MaxSpeed then
+        seat.MaxSpeed = seat.MaxSpeed * speedMultiplier
+    end
+end
+
+local function disableBoost(seat)
+    if seat and seat.MaxSpeed then
+        seat.MaxSpeed = seat.MaxSpeed / speedMultiplier
+    end
+end
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == boostKey and not gameProcessed then
+        local car = getCar()
+        if car then
+            enableBoost(car)
+        end
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input, gameProcessed)
+    if input.KeyCode == boostKey and not gameProcessed then
+        local car = getCar()
+        if car then
+            disableBoost(car)
+        end
+    end
+end)
