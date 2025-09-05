@@ -1,0 +1,6 @@
+local wiresFolder = game:GetService("Workspace").Map.Fences.Metal.Wires
+for _, wire in ipairs(wiresFolder:GetChildren()) do
+    if wire.Name == "MetalWire" then
+        wire:Destroy()
+    end
+end
