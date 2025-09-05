@@ -139,7 +139,6 @@ local Tab = Window:CreateTab("Premium", 4483362458) -- Title, Image
 
 local Label = Tab:CreateLabel("Artık Mevcut Değil", "rewind")
 
-
 local Tab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
 
 local TweenService = game:GetService("TweenService")
@@ -169,7 +168,7 @@ local function smoothTeleport()
 end
 
 local Button = Tab:CreateButton({
-    Name = "ÇamaşırHane",
+    Name = "Test",
     Callback = smoothTeleport
 })
 
@@ -245,6 +244,38 @@ local Button = Tab:CreateButton({
     end,
 })
 
+local pos = Vector3.new(-297.33, 110.76, -373.57)
+local Button = Tab:CreateButton({
+    Name = "Terk Edilmiş Kule",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(1130.37, 114.22, -1074.65)
+local Button = Tab:CreateButton({
+    Name = "Vampirin Yaşadığı yer",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(-1162.31, 48.90, -1826.62)
+local Button = Tab:CreateButton({
+    Name = "Gizemli Anime Kızı",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(-1822.94, 10.56, -309.58)
+local Button = Tab:CreateButton({
+    Name = "Başkent",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
 local pos = Vector3.new(447.29, -29.40, -262.54)
 local Button = Tab:CreateButton({
     Name = "Harita Altı",
@@ -254,6 +285,8 @@ local Button = Tab:CreateButton({
 })
 
 local Tab = Window:CreateTab("Araba", 4483362458) -- Title, Image
+
+local Label = Tab:CreateLabel("Note: Üst Katmanlı Teleportlarda Araba Kullanın", "rewind")
 
 local pos = Vector3.new(785.78, 89.50, -1514.60)
 local Button = Tab:CreateButton({
@@ -266,6 +299,14 @@ local Button = Tab:CreateButton({
 local pos = Vector3.new(510.62, 31.42, -252.69)
 local Button = Tab:CreateButton({
     Name = "Hücreler Üst Katman",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(-2366.55, -29.39, -844.09)
+local Button = Tab:CreateButton({
+    Name = "Çorak Topraklar Üst Katman",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
     end,
