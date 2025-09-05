@@ -133,6 +133,8 @@ local Button = Tab:CreateButton({
    end,
 })
 
+local Label = Tab:CreateLabel("Discord: babafingos", "rewind")
+
 local Tab = Window:CreateTab("Premium", 4483362458) -- Title, Image
 
 local Label = Tab:CreateLabel("Artık Mevcut Değil", "rewind")
