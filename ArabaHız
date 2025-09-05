@@ -1,7 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
 
-local speedMultiplier = 150
+local speedMultiplier = 10000
 
 local boostKey = Enum.KeyCode.LeftShift
 
