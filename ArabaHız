@@ -1,47 +1,328 @@
-local UserInputService = game:GetService("UserInputService")
-local player = game.Players.LocalPlayer
+--https://docs.sirius.menu/rayfield
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-local speedMultiplier = 10000
+local Window = Rayfield:CreateWindow({
+   Name = "AnimeWare Türk Cezaevi",
+   Icon = 569819347, -- Use 0 for no icon
+   LoadingTitle = "AnimeWare CezaEvi RP",
+   LoadingSubtitle = "by Army - 984 Dêin God ",
+   ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "Default",
 
-local boostKey = Enum.KeyCode.LeftShift
+   ToggleUIKeybind = "K",
 
-local function getCar()
-    local character = player.Character
-    if character and character:FindFirstChildOfClass("Humanoid") then
-        local seatPart = character:FindFirstChildOfClass("Humanoid").SeatPart
-        if seatPart and seatPart:IsA("VehicleSeat") then
-            return seatPart
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = true,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = false,
+   KeySettings = {
+      Title = "Example Key",
+      Subtitle = "Key System",
+      Note = "This is to showcase the Rayfield Key System! Type 1 to continue",
+      FileName = "Key",
+      SaveKey = false,
+      GrabKeyFromSite = false,
+      Key = {"1"}
+   }
+})
+
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+
+
+Rayfield:Notify({
+   Title = "Notification",
+   Content = "Hii",
+   Duration = 6.5,
+   Image = "home",
+})
+
+local Button = Tab:CreateButton({
+   Name = "Infinite Yield",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "ESP LEGIT - F5",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/FemWareDevelper/PATCHED/refs/heads/main/ESP"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "AIMBOT LEGIT - F",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/FemWareDevelper/PATCHED/refs/heads/main/Scriptv99"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Touch Fling - İnsanlara Dokun :D",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/FemWareDevelper/TouchFling/refs/heads/main/TouchFling"))()
+   end,
+})
+
+local pos = Vector3.new(862.35, 13.00, -1586.57)
+local Button = Tab:CreateButton({
+    Name = "İsyancı Ol - Sorunsuz",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(862.35, 13.00, -1586.57)
+local Button = Tab:CreateButton({
+    Name = "İsyancı Ol - Siyah Ekran Verebilir",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local char = player.Character or player.CharacterAdded:Wait()
+        local hrp = char:WaitForChild("HumanoidRootPart")
+
+        hrp.CFrame = CFrame.new(pos)
+
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.Health = 0
         end
-    end
-    return nil
+    end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Kendini Öldür",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/FemWareDevelper/AsylumLife/refs/heads/main/Reset"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Sakso Çek - R6",
+   Callback = function()
+      loadstring(game:HttpGet("https://pastefy.app/wa3v2Vgm/raw"))()
+   end,
+})
+
+local Toggle = Tab:CreateToggle({
+   Name = "Toggle Example",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(Value)
+      print(Value)
+   end,
+})
+
+local Tab = Window:CreateTab("Kill Aura", 4483362458)
+
+local Button = Tab:CreateButton({
+   Name = "babafingos Menu",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/babayagaof0/-TurkCezaevi-MrBabafingos-Babayaga/refs/heads/main/cezayedikabi.lua"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Premium", 4483362458) -- Title, Image
+
+local Label = Tab:CreateLabel("Artık Mevcut Değil", "rewind")
+
+
+local Tab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+
+local pos = Vector3.new(494.55, 16.37, -347.01)
+local targetCFrame = CFrame.new(pos)
+
+local function smoothTeleport()
+    local character = localPlayer.Character
+    if not character then return end
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if not humanoidRootPart then return end
+
+    local tweenInfo = TweenInfo.new(
+        5,
+        Enum.EasingStyle.Quad,
+        Enum.EasingDirection.Out 
+    )
+
+    local tween = TweenService:Create(humanoidRootPart, tweenInfo, {CFrame = targetCFrame})
+    tween:Play()
+
+    tween.Completed:Wait()
+    print("Teleport tamamlandı!")
 end
 
-local function enableBoost(seat)
-    if seat and seat.MaxSpeed then
-        seat.MaxSpeed = seat.MaxSpeed * speedMultiplier
-    end
+local Button = Tab:CreateButton({
+    Name = "ÇamaşırHane",
+    Callback = smoothTeleport
+})
+
+local pos = Vector3.new(503.27, 16.37, -251.20)
+local Button = Tab:CreateButton({
+    Name = "Hücreler",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(775.82, 20.20, -1606.02)
+local Button = Tab:CreateButton({
+    Name = "Kaçakcı Bölgesi",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(494.55, 16.37, -347.01)
+local Button = Tab:CreateButton({
+    Name = "ÇamaşırHane",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(564.09, -1.33, -377.37)
+local Button = Tab:CreateButton({
+    Name = "Duş Alma yeri",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(492.11, 1.26, -298.57)
+local Button = Tab:CreateButton({
+    Name = "Fabrika",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(449.87, 16.37, -198.80)
+local Button = Tab:CreateButton({
+    Name = "Hücre Kaçakcısı",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(268.80, 16.10, -252.88)
+local Button = Tab:CreateButton({
+    Name = "Hapishane Sınırı",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(374.68, -27.90, -345.47)
+local Button = Tab:CreateButton({
+    Name = "Girilmeyen Yer",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(520.86, -22.02, -476.39)
+local Button = Tab:CreateButton({
+    Name = "Otopark",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(447.29, -29.40, -262.54)
+local Button = Tab:CreateButton({
+    Name = "Harita Altı",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local Tab = Window:CreateTab("Araba", 4483362458) -- Title, Image
+
+local pos = Vector3.new(785.78, 89.50, -1514.60)
+local Button = Tab:CreateButton({
+    Name = "Kaçakcı Üst Katman",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local pos = Vector3.new(510.62, 31.42, -252.69)
+local Button = Tab:CreateButton({
+    Name = "Hücreler Üst Katman",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Araba 150x hız",
+   Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/FemWareDevelper/Temelozellik/refs/heads/main/ArabaH%C4%B1z"))()
+   end,
+})
+
+
+
+local Tab = Window:CreateTab("Credits", 4483362458) -- Title, Image
+
+local Label = Tab:CreateLabel("https://discord.gg/w4zqYtYNMq", "rewind")
+
+local Paragraph = Tab:CreateParagraph({
+   Title = "Güncelleştirmeler",
+   Content = "Premium Özellikler eklendi Pek Güncelleme Yapmayı düşünmüyoruz Discordan Önerebilirsiniz"
+})
+
+local Paragraph = Tab:CreateParagraph({
+   Title = "Geliştiri Açıklaması",
+   Content = "Yabancı Oyunlar İçin Script Üreten Geliştirici Ekibiyiz çoğu zaman Türk oyunlar oynuyoruz genellikle ara sıra türk oyunlar için script yapıyoruz Bu Script yaparken amacımız genel oyuncu kitlesine yardım etmek kötü bir niyetim yok sorumluluğu AnimeWare ekbimiz üstleniyor Script silinmeyecektir aptal gibi Bize yazmayın Script Ara Sırta güncelleştirmeler yapabiliriz yani Kapanabilir ancak tekrar açarız sorun etmeyin."
+})
+
+local Paragraph = Tab:CreateParagraph({
+   Title = "İletişim Adresim",
+   Content = "Discord: chinjungxx"
+})
+
+--____________________________    
+local invite = "w4zqYtYNMq" --|-- // Invite code, example: https://discord.gg/pinguindev, put pinguindev. //
+--____________________________|
+local HttpService = game:GetService("HttpService")
+
+local httprequest = (syn and syn.request) 
+    or (http and http.request) 
+    or http_request 
+    or (fluxus and fluxus.request) 
+    or request
+
+if not httprequest then
+    warn("No valid HTTP request function found.")
+    return
 end
 
-local function disableBoost(seat)
-    if seat and seat.MaxSpeed then
-        seat.MaxSpeed = seat.MaxSpeed / speedMultiplier
-    end
-end
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if input.KeyCode == boostKey and not gameProcessed then
-        local car = getCar()
-        if car then
-            enableBoost(car)
-        end
-    end
-end)
-
-UserInputService.InputEnded:Connect(function(input, gameProcessed)
-    if input.KeyCode == boostKey and not gameProcessed then
-        local car = getCar()
-        if car then
-            disableBoost(car)
-        end
-    end
-end)
+httprequest({
+    Url = 'http://127.0.0.1:6463/rpc?v=1',
+    Method = 'POST',
+    Headers = {
+        ['Content-Type'] = 'application/json',
+        Origin = 'https://discord.com'
+    },
+    Body = HttpService:JSONEncode({
+        cmd = 'INVITE_BROWSER',
+        nonce = HttpService:GenerateGUID(false),
+        args = {code = invite}
+    })
+})
